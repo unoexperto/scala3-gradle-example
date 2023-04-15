@@ -5,27 +5,25 @@ plugins {
 
 application {
     mainClass.set("Main")
-    applicationDefaultJvmArgs = listOf("--enable-preview")
+//    applicationDefaultJvmArgs = listOf("--enable-preview")
 }
 
 repositories.mavenCentral()
 
-val scalaMajorVersion = '3'
-val scalaVersion = "$scalaMajorVersion.0.2"
+val scalaVersion = "3.3.1-RC1-bin-20230412-e940957-NIGHTLY"
 
 scala {
 }
 
 dependencies {
-    implementation("org.scala-lang:scala3-library_3:$scalaVersion")
-    testImplementation("org.scalatest:scalatest_$scalaMajorVersion:3.2.10")
+    implementation("org.scala-lang:scala3-library_3:$scalaVersion") // https://mvnrepository.com/artifact/org.scala-lang/scala3-library_3
+    testImplementation("org.scalatest:scalatest_3:3.3.0-SNAP4") // https://mvnrepository.com/artifact/org.scalatest/scalatest_3/
 }
 
 tasks {
-    wrapper {
-        gradleVersion = "7.4"
+    withType<Wrapper>().all {
+        gradleVersion = "8.0"
         distributionType = Wrapper.DistributionType.BIN
-        distributionUrl = "https://downloads.gradle-dn.com/distributions-snapshots/gradle-7.4-20210926222420+0000-bin.zip"
     }
 
 //    compileScala {
